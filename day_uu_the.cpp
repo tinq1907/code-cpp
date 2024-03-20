@@ -13,6 +13,7 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t; cin >> t;
+    cin.ignore();
     while(t--)
     {
         string s;
@@ -28,8 +29,7 @@ int main()
             if (stoi(v[i]) % 2 == 0) even++;
             else odd++;
         }
-        int dec = max(odd, even);
-        if (n == dec) cout << "YES" << endl;
+        if ((n % 2 == 0 && even > odd) || (n % 2 != 0 && even < odd)) cout << "YES" << endl;
         else cout << "NO" << endl;
     }
     return 0;
