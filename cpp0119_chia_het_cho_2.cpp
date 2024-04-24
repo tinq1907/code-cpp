@@ -5,14 +5,13 @@ using namespace std;
 #define ll long long
 #define ull unsigned long long
 #define pb push_back
-
-int sod(int n){
-    int sum = 0;
-    while(n != 0){
-        sum += n % 10;
-        n /= 10;
+l solve(l n){
+    int count = 0;
+    if (n % 2 != 0) return 0;
+    for (int i = 2; i <= n ; i += 2){
+        if ( n % i == 0 &&i % 2 == 0) count++;
     }
-    return sum;
+    return count;
 }
 
 int main()
@@ -26,13 +25,12 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int m, s;
-    int min = INT_MAX;
-    cin >> m >> s;
-    int a = pow(10, m - 1), b = pow(10, m);
-    for (int i = a; i < b; i++){
-        int tmp = sod(i);
-        if (tmp == s && tmp < min) min = tmp; 
+    int t; cin >> t;
+    while(t--)
+    {
+        l n;
+        cin >> n;
+        cout << solve(n) << endl;
     }
-    cout << min << endl;
+    return 0;
 }
