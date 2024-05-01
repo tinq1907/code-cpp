@@ -12,6 +12,7 @@ int main()
         {
             if (i % a == 0 || i % b == 0)
                 cnt++;
+                
         }
         cout << cnt << endl;
     }
