@@ -4,7 +4,6 @@ using namespace std;
 #define ll long long
 #define ull unsigned long long
 #define pb push_back
-
 struct SinhVien{
     string id;
     string name;
@@ -13,14 +12,14 @@ struct SinhVien{
 };
 
 void nhap (SinhVien &a){
-    cin >> a.id;
     cin.ignore();
+    getline(cin, a.id); //khong biet tai sao nma dung cin bthg xong cin.ignore la WA =))
     getline(cin, a.name);
     cin >> a.mclass >> a.s1 >> a.s2 >> a.s3;
 }
 
 bool cmp (SinhVien a, SinhVien b){
-    return a.name > b.name;
+    return a.name < b.name;
 }
 
 void sap_xep(SinhVien ds[], int n){
