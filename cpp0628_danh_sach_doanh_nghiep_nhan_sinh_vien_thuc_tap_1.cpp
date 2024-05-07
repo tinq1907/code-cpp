@@ -34,7 +34,7 @@ bool cmp(comp a, comp b){
 }
 
 void arrange(comp a[], int n){
-    sort(a, a + n, cmp);
+    sort(a , a + n , cmp);
 }
 
 int main()
