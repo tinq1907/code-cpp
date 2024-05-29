@@ -7,9 +7,11 @@ using namespace std;
 int kh = 1;
 int mh = 1;
 int dh = 1;
+
 class KhachHang;
 class MatHang;
 class HoaDon;
+
 map <string, KhachHang> mp1;
 map<string, MatHang> mp2;
 
@@ -42,32 +44,43 @@ class MatHang{
             mp2[a.id2] = a;
             return mycin;
         }
-        
-};
+};  
 
 class HoaDon{
     public:
         string id3;
         string mkh, mdh;   
-        int num; 
+        int num, profit; 
         friend istream &operator >> (istream &mycin, HoaDon &a){
             if (dh < 10) a.id3 = "HD00" + to_string(dh++);
             else if (dh >= 10) a.id3 = "HD0" + to_string(dh++);
             mycin >> a.mkh >> a.mdh >> a.num;
+            a.profit = a.num * (mp2[a.mdh].sprice - mp2[a.mdh].bprice);
             return mycin;
         }
         friend ostream &operator << (ostream &mycout, HoaDon a){
             cout << a.id3 << " ";
             cout << mp1[a.mkh].name1 << " " << mp1[a.mkh].add << " ";
-            cout << mp2[a.mdh].name2 << " " << mp2[a.mdh].type << " ";
-            cout << mp2[a.mdh].bprice << " " << mp2[a.mdh].sprice << " " << a.num << " " << a.num * mp2[a.mdh].sprice;
+            cout << mp2[a.mdh].name2 << " ";
+            cout << a.num << " " << a.num * mp2[a.mdh].sprice << " " << a.profit ;
             cout << endl;
             return mycout;
         }
+        friend void sapxep(HoaDon *a, int n);
 };
 
+bool cmp(HoaDon a, HoaDon b){
+    if(a.profit == b.profit){
+        return mp2[a.mdh].name2 > mp2[b.mdh].name2;
+    }
+    return a.profit > b.profit;
+}
+
+void sapxep(HoaDon *a, int n){
+    sort(a, a + n, cmp);
+}
+
 int main(){
-    
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
@@ -87,7 +100,9 @@ int main(){
     for(i=0;i<M;i++) cin >> dsmh[i];
     cin >> K;
     for(i=0;i<K;i++) cin >> dshd[i];
-    
+
+    sapxep(dshd, K);
+
     for(i=0;i<K;i++) cout << dshd[i];
     return 0;
 }
