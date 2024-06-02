@@ -49,4 +49,8 @@ int main()
         cout << endl;
     }
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6b724d2b654d79d029a3be054063a58f66a27d1f
