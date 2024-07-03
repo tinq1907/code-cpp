@@ -15,20 +15,20 @@ void solve(){
 	ll n;
 	cin >> n;
 	if (prime_check(n)) {
-		cout << n << endl;
+		cout << n << endl; // số nto thì ước nto lớn nhất là chính nó
 		return;
 	}
-	ll r ;
+	ll r ; // kết quả
 	for (ll i = 2; i <= sqrt(n); ++i){
 		if (n % i == 0){
 			if (prime_check(n / i)) {
-				cout << n / i << endl;
+				cout << n / i << endl; // đồng thời check người từ dưới, nếu là nto thì return luôn
 				return;
 			}
-			if (prime_check(i)) r = i;
+			if (prime_check(i)) r = i; // cái trên không đúng thì check i phải nto không và cập nhật biến r
 		}
 	}
-	cout << r << endl;
+	cout << r << endl;	
 }
 int main()
 {
